@@ -39,14 +39,28 @@ public class TeamTest {
     }
 
     @Test
-    public void equals_same_fields(){
+    public void equals_same_name_and_members(){
         Team team2 = new Team("test-team");
         assert(team.equals(team2));
     }
 
     @Test
-    public void equals_diff_names(){
+    public void equals_diff_names_same_members(){
         Team team2 = new Team("test-team-2");
+        assert(!team.equals(team2));
+    }
+
+    @Test
+    public void equals_same_name_diff_members(){
+        Team team2 = new Team("test-team");
+        team2.addMember("Gaucho");
+        assert(!team.equals(team2));
+    }
+
+    @Test
+    public void equals_diff_names_and_mems(){
+        Team team2 = new Team("test-team-2");
+        team2.addMember("Gaucho");
         assert(!team.equals(team2));
     }
 
